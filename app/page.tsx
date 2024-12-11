@@ -1,12 +1,9 @@
 "use client"
 
-import { useEffect } from "react"
-import { useRouter } from "next/navigation"
 import { WorkspaceList } from "@/components/workspace/workspace-list"
 import { Button } from "@/components/ui/button"
 import { PlusIcon } from "lucide-react"
 import Link from "next/link"
-import { useAuth } from "@/lib/auth"
 
 // Mock data - replace with actual data fetching
 const workspaces = [
@@ -31,23 +28,6 @@ const workspaces = [
 ]
 
 export default function HomePage() {
-  const { user, isLoading } = useAuth()
-  const router = useRouter()
-
-  useEffect(() => {
-    if (!isLoading && !user) {
-      router.push("/auth/login")
-    }
-  }, [user, isLoading, router])
-
-  if (isLoading) {
-    return <div>Loading...</div>
-  }
-
-  if (!user) {
-    return null
-  }
-
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex items-center justify-between mb-8">
