@@ -4,6 +4,7 @@ import { WorkspaceList } from "@/components/workspace/workspace-list"
 import { Button } from "@/components/ui/button"
 import { PlusIcon } from "lucide-react"
 import Link from "next/link"
+import { Navbar } from "@/components/navbar"
 
 // Mock data - replace with actual data fetching
 const workspaces = [
@@ -29,22 +30,25 @@ const workspaces = [
 
 export default function HomePage() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="flex items-center justify-between mb-8">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Workspaces</h1>
-          <p className="text-muted-foreground mt-2">
-            Manage your band projects and collaborations
-          </p>
+    <>
+      <Navbar />
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight">Workspaces</h1>
+            <p className="text-muted-foreground mt-2">
+              Manage your band projects and collaborations
+            </p>
+          </div>
+          <Link href="/dashboard/workspaces/new">
+            <Button>
+              <PlusIcon className="h-4 w-4 mr-2" />
+              New Workspace
+            </Button>
+          </Link>
         </div>
-        <Link href="/dashboard/workspaces/new">
-          <Button>
-            <PlusIcon className="h-4 w-4 mr-2" />
-            New Workspace
-          </Button>
-        </Link>
+        <WorkspaceList workspaces={workspaces} />
       </div>
-      <WorkspaceList workspaces={workspaces} />
-    </div>
+    </>
   )
 }
