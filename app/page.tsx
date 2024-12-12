@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { PlusIcon } from "lucide-react"
 import Link from "next/link"
 import { Navbar } from "@/components/layouts/navbar"
+import { useUser } from "@auth0/nextjs-auth0/client"
 
 // Mock data - replace with actual data fetching
 const workspaces = [
@@ -29,6 +30,13 @@ const workspaces = [
 ]
 
 export default function HomePage() {
+  const { user, isLoading } = useUser()
+
+  // Pokaż pustą stronę podczas ładowania
+  if (isLoading) {
+    return null
+  }
+
   return (
     <>
       <Navbar />
