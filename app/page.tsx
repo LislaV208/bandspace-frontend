@@ -1,10 +1,10 @@
 "use client"
 
-import { WorkspaceList } from "@/components/workspace/workspace-list"
+import { WorkspaceList } from "@/components/features/workspace/workspace-list"
 import { Button } from "@/components/ui/button"
 import { PlusIcon } from "lucide-react"
 import Link from "next/link"
-import { Navbar } from "@/components/navbar"
+import { Navbar } from "@/components/layouts/navbar"
 
 // Mock data - replace with actual data fetching
 const workspaces = [
